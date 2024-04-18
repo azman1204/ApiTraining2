@@ -17,11 +17,25 @@
             const myUl = document.getElementById("employee-list");
             json.forEach(emp => {
                 const myList = document.createElement("li");
-                myList.textContent = `${emp.name} ${emp.age}`;
+                myList.innerHTML = `
+                ${emp.name} ${emp.age} 
+                <button onClick='doDelete(${emp.id})'>delete</button>`;
                 myUl.appendChild(myList);
             });
         })
         .catch(error => console.error("Error:", error));
+
+        function doDelete(id) {
+            alert(id);
+            let url = 'https://localhost:7024/api/employee/' + id;
+            let headers = {
+                method : 'DELETE'
+            }
+            fetch(url, headers)
+            .then(data => data.json())
+            .then(json => console.log(json))
+            .catch(error => console.error("Error ", error))
+        }
     </script>
 </body>
 </html>
