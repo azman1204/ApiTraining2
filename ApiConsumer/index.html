@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Employee List</h1>
+    <ul id="employee-list"></ul>
+    <script>
+        // fetch() similar to HttpClient in C#
+        fetch('https://localhost:7024/api/employee')
+        .then(data => data.json())
+        .then(json => {
+            console.log(json);
+            const myUl = document.getElementById("employee-list");
+            json.forEach(emp => {
+                const myList = document.createElement("li");
+                myList.textContent = `${emp.name} ${emp.age}`;
+                myUl.appendChild(myList);
+            });
+        })
+        .catch(error => console.error("Error:", error));
+    </script>
+</body>
+</html>
