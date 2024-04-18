@@ -29,6 +29,25 @@ namespace ConsoleApp1
             var response = client.GetStringAsync(url);
             return await response;
         }
+
+        // post data using HttpClient
+        public static async Task PostData()
+        {
+            HttpClient client = new HttpClient();
+            string json = "{\"id\": 10, \"name\": \"George Bush\", \"age\": 65}";
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            string url = "https://localhost:7024/api/employee";
+            var response = await client.PostAsync(url, content);
+            if (response.IsSuccessStatusCode)
+            {
+                string res = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(res);
+            }
+            else
+            {
+                Console.WriteLine("Failed to post Employee");
+            }
+        }
     }
 
     class Employee

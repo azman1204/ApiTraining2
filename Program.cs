@@ -9,4 +9,5 @@ using ConsoleApp1;
 //new DBDemo().update();
 //new DBDemo().delete();
 
-ApiConsumer.Runme();
+//ApiConsumer.Runme();
+await ApiConsumer.PostData();
