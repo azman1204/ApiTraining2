@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Employee Form</h1>
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="age" placeholder="Age">
+    <input type="text" id="id" placeholder="Id">
+    <button onclick="doSave()">Save</button>
+    <script>
+        function doSave() {
+            let xname = document.getElementById("name").value;
+            let xage  = document.getElementById("age").value;
+            let xid   = document.getElementById("id").value;
+            let data  = {name: xname, age: xage, id: xid};
+            let headers = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            };
+
+            fetch('https://localhost:7024/api/employee', headers)
+            .then(data => data.json())
+            .then(json => {
+                console.log(json);
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
