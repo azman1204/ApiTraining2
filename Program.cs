@@ -10,4 +10,7 @@ using ConsoleApp1;
 //new DBDemo().delete();
 
 //ApiConsumer.Runme();
-await ApiConsumer.PostData();
+//await ApiConsumer.PostData();
+//await ApiConsumer.UpdateData();
+//await ApiConsumer.DeleteData();
+await ApiConsumer.FindOneData();
